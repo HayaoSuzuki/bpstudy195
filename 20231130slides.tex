@@ -1,0 +1,165 @@
+\documentclass[aspectratio=169,dvipdfmx,12pt,notheorems]{beamer}
+%%%% 和文用 %%%%%
+\usepackage{bxdpx-beamer}
+\usepackage{pxjahyper}
+\usepackage{minijs}%和文用
+\renewcommand{\kanjifamilydefault}{\gtdefault}%和文用
+
+%%%% スライドの見た目 %%%%%
+\usetheme{Madrid}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}%好みに応じてどうぞ）
+\setbeamertemplate{blocks}[rounded]
+\useinnertheme{circles}
+\setbeamertemplate{footline}[page number]
+\setbeamerfont{footline}{size=\normalsize,series=\bfseries}
+\setbeamercolor{footline}{fg=black,bg=black}
+%%%%
+
+%%%% 定義環境 %%%%%
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定義}
+\newtheorem{proposition}{命題}
+\newtheorem{lemma}{補題}
+\newtheorem{corollary}{系}
+\newtheorem{conjecture}{予想}
+\newtheorem*{remark}{Remark}
+\renewcommand{\proofname}{}
+%%%%%%%%%
+
+%%%%% フォント基本設定 %%%%%
+\usepackage[T1]{fontenc}%8bit フォント
+\usepackage{textcomp}%欧文フォントの追加
+\usepackage[utf8]{inputenc}%文字コードをUTF-8
+\usepackage[deluxe]{otf}%otfパッケージ
+\usepackage{lxfonts}%数式・英文ローマン体を Lxfont にする
+\usepackage{bm}%数式太字
+%%%%%%%%%%
+
+%%%%% PythonTeX %%%%%
+\usepackage[makestderr]{pythontex}
+\restartpythontexsession{\thesection}
+
+\usepackage{ulem}
+ 
+\title{Python Distilled 試飲会}
+\author[Hayao]{Hayao Suzuki}
+\institute[BPStudy \#195]{BPStudy \#195}
+\date{November 30, 2023}
+
+\begin{document}
+
+\begin{frame}[plain]\frametitle{}
+\titlepage %表紙
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}\frametitle{自己紹介}
+
+\begin{block}{お前誰よ}
+\begin{description}
+\item[Name] Hayao Suzuki（鈴木　駿）
+\item[\xout{Twitter} X] \href{https://twitter.com/CardinalXaro}{@CardinalXaro}
+\item[Work] Software Developer @ BeProud Inc.
+\end{description}
+\end{block}
+
+\begin{center}
+\begin{itemize}
+\item 株式会社ビープラウド \includegraphics[width=3cm]{bplogo.png} 
+\begin{itemize}
+\item IT勉強会支援プラットフォーム \includegraphics[width=2cm]{connpass_logo_1.png}
+\item Python独学プラットフォーム \includegraphics[width=1cm]{pyq_logo_color.png} 
+\item システム開発ドキュメントサービス \includegraphics[width=3cm]{tracery.png} 
+\end{itemize}
+\end{itemize}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{自己紹介}
+
+\begin{block}{発表したトーク（抜粋）}
+\begin{itemize}
+\item \structure{SymPyによる数式処理}(PyCon JP 2018)
+\item \structure{インメモリーストリーム活用術}(PyCon JP 2020)
+\item \structure{組み込み関数powの知られざる進化}(PyCon JP 2021)
+\item \structure{Let's implement useless Python objects}(PyCon JP 2023)
+\end{itemize}
+\end{block}
+\url{https://xaro.hatenablog.jp/}に一覧があります。
+\end{frame}
+
+\begin{frame}\frametitle{自己紹介}
+
+\begin{block}{翻訳した本}
+\begin{itemize}
+\item \structure{Python Distilled}(O'Reilly Japan) \structure{本日の主役} 
+\end{itemize}
+\end{block}
+
+\begin{block}{監訳した本}
+\begin{itemize}
+\item \structure{入門 Python 3 第2版}(O'Reilly Japan) 
+\item \structure{ロバストPython}(O'Reilly Japan) 
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{今日のテーマ}
+
+\begin{center}
+\Huge{Python Distilled}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{今日のテーマ}
+
+\begin{center}
+\includegraphics[width=5cm]{picture_large978-4-8144-0046-1.jpeg}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{今日のテーマ}
+
+\begin{center}
+\includegraphics[width=5cm]{original.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

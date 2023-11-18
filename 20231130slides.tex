@@ -114,13 +114,7 @@
 
 \end{frame}
 
-\begin{frame}\frametitle{今日のテーマ}
-
-\begin{center}
-\Huge{Python Distilled}
-\end{center}
-
-\end{frame}
+\section{Python Distilled}
 
 \begin{frame}\frametitle{今日のテーマ}
 
@@ -138,28 +132,186 @@
 
 \end{frame}
 
+\begin{frame}\frametitle{Python Distilled}
 
+\begin{block}{原著：Python Distilled}
+\begin{description}
+\item[著者] David M. Beazley
+\item[出版年] 2021年9月
+\item[出版社] Addison-Wesley(Pearson)
+\end{description}
+\end{block}
 
+\begin{block}{邦訳：Python Distilled プログラミング言語Pythonのエッセンス}
+\begin{description}
+\item[訳者] 鈴木 駿
+\item[出版年] 2023年10月
+\item[出版社] オライリー・ジャパン
+\end{description}
+\end{block}
 
+Pearsonとの契約上、邦訳の表紙は動物ではない。
 
+\end{frame}
 
+\begin{frame}\frametitle{翻訳の流れ}
 
+\begin{block}{翻訳出版までの軌跡}
+\begin{itemize}
+\item 2022年4月 興味本位で原著電子版を購入
+\item 2022年5月 オライリーの編集者に原著を紹介する（雑談レベル）
+\item 2022年6月 翻訳版権取得に向けて動き出す
+\item 2022年7月 翻訳版権取得、翻訳の打診、翻訳に挑戦しようと決意
+\item 2022年9月 翻訳を開始する（ロバストPythonの監訳と並行）
+\item 2023年4月 一通り翻訳が完了、推敲の日々
+\item 2023年9月 翻訳作業完了
+\end{itemize}
+\end{block}
+Git rebaseをしたせいで翻訳開始時期を勘違いしていた。
+\end{frame}
 
+\begin{frame}\frametitle{Python Distilledってどんな本？}
 
+\begin{block}{原著者「はじめに」より}
+この『Python Distilled』はPythonによるプログラミングについての書籍です。
+Pythonで可能なことや、あるいは行われたことをすべて文書化しようというわけではありません。
+本書の目的は、現代的であり厳選、つまり蒸留（distilled）されたプログラミング言語Pythonの核心を紹介することです。
+（中略）
+しかし、それはまた、ソフトウェアライブラリを書き、Pythonの何たるかを知り、何が最も役に立つかを見出した結果でもあるのです。
+\end{block}
 
+\end{frame}
 
+\begin{frame}\frametitle{つまり、どんな本？}
 
+\begin{block}{一言でまとめると}
+プログラミング言語Pythonそのものに特化した本
+\end{block}
 
+\end{frame}
 
+\begin{frame}\frametitle{Pythonの学び方}
 
+\begin{block}{Pythonは公式ドキュメントが充実}
+\begin{itemize}
+\item \url{https://docs.python.org/ja/3/}
+\end{itemize}
+\end{block}
 
+\begin{alertblock}{アレはどこに書いてあるの？}
+そうそう、アレだよ、アレ、あそこにあるよ。
+\end{alertblock}
+発表者は親の影響で中日ファンでしたが、最近はまったく野球を見ていません。
 
+\end{frame}
 
+\begin{frame}\frametitle{突然のクイズ}
 
+\begin{center}
+\Huge{Pythonのアレ、どこに書いてあるかなクイズ！}
+\end{center}
 
+\end{frame}
 
+\begin{frame}\frametitle{第1問}
 
+\begin{block}{問題：関数のデフォルト引数}
+関数のデフォルト引数を使う際はイミュータブルなオブジェクトを使います。
+この注意事項はドキュメントのどこに書かれているでしょうか？
+\end{block}
 
+\only<2->{
+
+\begin{exampleblock}{解答：2箇所}
+\begin{itemize}
+\item \href{https://docs.python.org/ja/3/tutorial/controlflow.html}{チュートリアル}（注意喚起）
+\item \href{https://docs.python.org/ja/3/faq/programming.html}{プログラミングFAQ}（デフォルト引数の仕組みについて）
+\end{itemize}
+\end{exampleblock}
+
+}
+
+\end{frame}
+
+\begin{frame}\frametitle{第2問}
+
+\begin{block}{問題：\texttt{with}文}
+Python 2.5から\texttt{with}文が導入されました。
+\texttt{with}文の使い方はどこに書かれているでしょうか？
+\end{block}
+
+\only<2->{
+
+\begin{exampleblock}{解答：3箇所}
+\begin{itemize}
+\item \href{https://docs.python.org/ja/3/tutorial/inputoutput.html}{チュートリアル}（存在を示唆するだけ）
+\item \href{https://docs.python.org/ja/3/reference/compound_stmts.html}{言語リファレンス}（\texttt{with}文の構文とコンテキストマネージャについて）
+\item \href{https://peps.python.org/pep-0343/}{PEP 343}（\texttt{with}の導入経緯や背景について）
+\end{itemize}
+\end{exampleblock}
+
+}
+
+\end{frame}
+
+\begin{frame}\frametitle{第3問}
+
+\begin{block}{問題：\texttt{\_\_init\_\_()}と\texttt{\_\_new\_\_()}}
+クラスのインスタンスを実際に生成するのは\texttt{\_\_new\_\_()}、
+インスタンスの初期化は\texttt{\_\_init\_\_()}です。
+この関係について書かれているのはどこでしょうか？
+\end{block}
+
+\only<2->{
+
+\begin{exampleblock}{解答：1箇所}
+\begin{itemize}
+\item \href{https://docs.python.org/ja/3/reference/datamodel.html}{言語リファレンス}
+\end{itemize}
+\end{exampleblock}
+\texttt{\_\_init\_\_()}はコンストラクタじゃないよ！
+}
+
+\end{frame}
+
+\begin{frame}\frametitle{第4問}
+
+\begin{block}{問題：\texttt{from module import *}}
+\texttt{from module import *}が可能なのはモジュールレベルのインポートで、
+クラスや関数内部ではできません。
+この事実について書かれているのはどこでしょうか？
+\end{block}
+
+\only<2->{
+
+\begin{exampleblock}{解答：1箇所}
+\begin{itemize}
+\item \href{https://docs.python.org/ja/3/reference/simple_stmts.html}{言語リファレンス}
+\end{itemize}
+\end{exampleblock}
+ただし、\texttt{from module import *}は使うなと\href{https://docs.python.org/ja/3/faq/programming.html}{注意喚起}されている
+
+}
+
+\end{frame}
+
+\begin{frame}\frametitle{Pythonの学び方}
+
+\begin{block}{Pythonは公式ドキュメントが充実}
+\begin{itemize}
+\item 大体公式ドキュメントやPEPに書かれている
+\item チュートリアルと標準ライブラリだけで何とかなる
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{公式ドキュメントは膨大すぎる}
+\begin{itemize}
+\item 突っ込んだ内容だと言語リファレンスやPEPを探ることになる
+\item 言語リファレンスは「そっけない書き方」、読み物的に読めない。
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
 
 
 \end{document}

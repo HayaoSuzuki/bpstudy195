@@ -91,7 +91,7 @@
 \item \structure{SymPyによる数式処理}(PyCon JP 2018)
 \item \structure{インメモリーストリーム活用術}(PyCon JP 2020)
 \item \structure{組み込み関数powの知られざる進化}(PyCon JP 2021)
-\item \structure{Let's implement useless Python objects}(PyCon JP 2023)
+\item \structure{Let's implement useless Python objects}(PyCon APAC 2023)
 \end{itemize}
 \end{block}
 \url{https://xaro.hatenablog.jp/}に一覧があります。
@@ -167,7 +167,7 @@ Pearsonとの契約上、邦訳の表紙は動物ではない。
 \item 2023年9月 翻訳作業完了
 \end{itemize}
 \end{block}
-Git rebaseをしたせいで翻訳開始時期を勘違いしていた。
+
 \end{frame}
 
 \begin{frame}\frametitle{Python Distilledってどんな本？}
@@ -243,6 +243,28 @@ Pythonで可能なことや、あるいは行われたことをすべて文書�
 
 \begin{frame}\frametitle{第1問}
 
+\begin{block}{問題：シングルトンの比較}
+\texttt{None}や\texttt{True}、\texttt{False}はシングルトンであり、
+シングルトンは\texttt{is}文で比較します。
+この注意事項はドキュメントのどこに書かれているでしょうか？
+\end{block}
+
+\only<2->{
+
+\begin{exampleblock}{解答：2箇所}
+\begin{itemize}
+\item \href{https://docs.python.org/ja/3/reference/expressions.html}{言語仕様}（注意喚起）
+\item \href{https://peps.python.org/pep-0008/}{PEP 8}（簡単な理由も）
+\end{itemize}
+\end{exampleblock}
+実質的にはPEP 8だけとも言える。
+
+}
+
+\end{frame}
+
+\begin{frame}\frametitle{第2問}
+
 \begin{block}{問題：関数のデフォルト引数}
 関数のデフォルト引数を使う際はイミュータブルなオブジェクトを使います。
 この注意事項はドキュメントのどこに書かれているでしょうか？
@@ -261,7 +283,7 @@ Pythonで可能なことや、あるいは行われたことをすべて文書�
 
 \end{frame}
 
-\begin{frame}\frametitle{第2問}
+\begin{frame}\frametitle{第3問}
 
 \begin{block}{問題：\texttt{with}文}
 Python 2.5から\texttt{with}文が導入されました。
@@ -282,7 +304,7 @@ Python 2.5から\texttt{with}文が導入されました。
 
 \end{frame}
 
-\begin{frame}\frametitle{第3問}
+\begin{frame}\frametitle{第4問}
 
 \begin{block}{問題：\texttt{\_\_init\_\_()}と\texttt{\_\_new\_\_()}}
 クラスのインスタンスを実際に生成するのは\texttt{\_\_new\_\_()}、
@@ -302,7 +324,7 @@ Python 2.5から\texttt{with}文が導入されました。
 
 \end{frame}
 
-\begin{frame}\frametitle{第4問}
+\begin{frame}\frametitle{第5問}
 
 \begin{block}{問題：\texttt{from module import *}}
 \texttt{from module import *}が可能なのはモジュールレベルのインポートで、
@@ -466,5 +488,340 @@ Python 2.5から\texttt{with}文が導入されました。
 
 \end{frame}
 
+\begin{frame}\frametitle{Python Distilled}
+
+\begin{center}
+\Huge{結局、何が書いてあるの？}
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{1章 Pythonの基礎}
+
+\begin{block}{1章 Pythonの基礎}
+\begin{itemize}
+\item 変数やデータ型、式、制御構造、関数、クラス、入出力についての概説
+\item 原書はPython 3.8以降を想定、翻訳では3.11まで対応できるようにした
+\item わかる人は飛ばしても大丈夫
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{1章 Pythonの基礎}
+
+\begin{exampleblock}{例：スタックベースの計算機}
+大半の場合、継承は最良の解決策ではありません。
+例えば、単純なスタックベースの計算機を作りたいとします。
+\end{exampleblock}
+
+\begin{alertblock}{翻訳時に抱いた懸念}
+\begin{itemize}
+\item 「スタックベースの計算機」は説明なしで通じるのか
+\item 逆ポーランド記法の説明を追加するべきか
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}\frametitle{2章 演算子、式、データ操作}
+
+\begin{block}{2章 演算子、式、データ操作}
+\begin{itemize}
+\item 式、演算子、評価規則について
+\item 基本的なデータ構造についても説明
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{2章 演算子、式、データ操作}
+
+\begin{alertblock}{暗黙的な真偽値評価の罠}
+\begin{pygments}{python}
+def f(x, items=None):
+    if not items:
+        items = []
+    items.append(x)
+    return items
+\end{pygments}
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{2章 演算子、式、データ操作}
+
+\begin{exampleblock}{実行例}
+\begin{pygments}{python}    
+>>> f(4)
+[4]
+>>> a = []
+>>> f(3, a)
+[3]
+>>> a  # 更新されない！
+[]
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}\frametitle{3章 プログラムの構造と制御構造}
+
+\begin{block}{3章 プログラムの構造と制御構造}
+\begin{itemize}
+\item 条件分岐、ループ、例外、コンテキストマネージャについて
+\item 「3.4 例外」は例外なく読もう！
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{3章 プログラムの構造と制御構造}
+
+\begin{exampleblock}{例：例外値を保持する変数の生存範囲}
+\begin{pygments}{python}    
+try:
+    int("N/A")
+except ValueError as e:
+    print("Failed:", e)
+print(e)  # NameError
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{3章 プログラムの構造と制御構造}
+
+\begin{exampleblock}{例：例外の連鎖}
+\begin{pygments}{python}    
+try:
+    x = int("N/A")
+except Exception as e:
+    raise ApplicationError("It failed") from e
+\end{pygments}
+\end{exampleblock}
+
+\begin{exampleblock}{例：想定外の連鎖}
+\begin{pygments}{python}    
+try:
+    x = int("N/A")
+except Exception as e:
+    print("It failed:", err)  # NameError
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}\frametitle{3章 プログラムの構造と制御構造}
+
+\begin{block}{\texttt{\_\_cause\_\_}属性と\texttt{\_\_context\_\_}属性}
+\begin{itemize}
+\item \texttt{\_\_cause\_\_}属性は意図して例外を連鎖した時に参照する
+\item \texttt{\_\_context\_\_}属性は例外処理中の想定外の例外発生時の情報源
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{4章 オブジェクト、型、プロトコル}
+
+\begin{block}{4章 オブジェクト、型、プロトコル}
+\begin{itemize}
+\item Pythonの基本的なオブジェクトモデルとメカニズムについて
+\item PyCon APAC 2023の発表の元ネタの1つ
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{4章 オブジェクト、型、プロトコル}
+
+\begin{exampleblock}{例：参照カウント}
+\begin{pygments}{python}    
+>>> a = 37  # 値37を持つオブジェクトを作成する
+>>> b = a  # オブジェクトの参照カウント増加
+>>> c = []
+>>> c.append(b)  # オブジェクトの参照カウント増加
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{4章 オブジェクト、型、プロトコル}
+
+\begin{alertblock}{例：参照とコピー}
+\begin{pygments}{python}    
+>>> a = [1, 2, 3, 4]
+>>> b = a  # bはaの参照
+>>> b is a
+True
+>>> b[2] = -100  # bの要素を変更する
+>>> a  # aの要素も変更される
+[1, 2, -100, 4]
+\end{pygments}
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{4章 オブジェクト、型、プロトコル}
+
+\begin{exampleblock}{例：整数型と浮動小数点数型}
+\begin{pygments}{python}    
+>>> a = 42
+>>> b = 3.7
+>>> a.__add__(b)
+NotImplemented
+>>> b.__radd__(a)
+45.7
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}\frametitle{5章 関数}
+
+\begin{block}{5章 関数}
+\begin{itemize}
+\item 関数定義、適用、スコープ、クロージャ、デコレータ、関数型プログラミング
+\item 5.16節と5.17節のコールバック関数に関する説明は内容が濃い
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{5章 関数}
+
+\begin{exampleblock}{例：動的な関数生成}
+\begin{pygments}{python}    
+def make_init(*names):
+    params = ", ".join(names)
+    code = f"def __init__(self, {params}):\n"
+    for name in names:
+        code += f"    self.{name} = {name}\n"
+    d = {}
+    exec(code, d)
+    return d["__init__"]
+\end{pygments}
+\end{exampleblock}
+\texttt{NamedTuple}や\texttt{@dataclass}で活用されているテクニック
+
+\end{frame}
+
+\begin{frame}\frametitle{6章 ジェネレータ}
+
+\begin{block}{6章 ジェネレータ}
+\begin{itemize}
+\item ジェネレータの基礎から応用まで
+\item 「コルーチン」の歴史も
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{6章 ジェネレータ}
+
+\begin{exampleblock}{例：ジェネレータの委譲}
+\begin{pygments}{python}    
+def flatten(items):
+    for i in items:
+        if isinstance(i, list):
+            yield from flatten(i)
+        else:
+            yield i
+
+a = [1, 2, [3, [4, 5], 6, 7], 8]
+for x in flatten(a):
+    print(x, end=" ")
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{6章 ジェネレータ}
+
+\begin{exampleblock}{例：拡張ジェネレータ}
+\begin{pygments}{python}    
+def receiver():
+    print("Ready to receive")
+    while True:
+        n = yield
+        print("Got", n)
+
+>>> r = receiver()
+>>> r.send(None)
+Ready to receive
+>>> r.send("Hello")
+Got Hello
+>>> r.close()
+\end{pygments}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}\frametitle{7章 クラス}
+
+\begin{block}{7章 クラス}
+\begin{itemize}
+\item クラスに関する概念をトップダウンで学ぶ
+\item 相当マニアック
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{8章 モジュールとパッケージ}
+
+\begin{block}{8章 モジュールとパッケージ}
+\begin{itemize}
+\item モジュールの概念が焦点
+\item パッケージングについては触れていない
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{9章 入力と出力}
+
+\begin{block}{9章 入力と出力}
+\begin{itemize}
+\item I/O処理に必要なテクニックと抽象化
+\item 後半のI/Oライブラリの概要は流し読みでOK
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{10章 組み込み関数と標準ライブラリ}
+
+\begin{block}{10章 組み込み関数と標準ライブラリ}
+\begin{itemize}
+\item 組み込み関数と標準ライブラリ、組み込み例外の一覧
+\item 流し読みでOK
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{まとめ}
+
+\begin{block}{さっそく購入しよう}
+\begin{itemize}
+\item \url{https://www.oreilly.co.jp/books/9784814400461/}
+\item \url{https://www.ohmsha.co.jp/book/9784814400461/}
+\end{itemize}
+\end{block}
+
+\begin{block}{オライリー学習プラットフォームとは}
+\begin{itemize}
+\item \url{https://www.oreilly.co.jp/online-learning/}
+\item 6万冊以上の書籍と3万時間以上の動画（日本語もある！）
+\item 業界エキスパートによるライブイベント
+\item インタラクティブなシナリオとサンドボックスを使った実践的な学習
+\item 公式認定試験対策資料
+\item 『Python Distilled』もオライリー学習プラットフォームで読み放題（すごい）
+\end{itemize}
+\end{block}
+
+\end{frame}
 
 \end{document}

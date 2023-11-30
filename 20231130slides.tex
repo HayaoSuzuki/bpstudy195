@@ -253,7 +253,7 @@ Pythonで可能なことや、あるいは行われたことをすべて文書�
 
 \begin{exampleblock}{解答：2箇所}
 \begin{itemize}
-\item \href{https://docs.python.org/ja/3/reference/expressions.html}{言語仕様}（注意喚起）
+\item \href{https://docs.python.org/ja/3/reference/expressions.html}{言語リファレンス}（注意喚起）
 \item \href{https://peps.python.org/pep-0008/}{PEP 8}（簡単な理由も）
 \end{itemize}
 \end{exampleblock}
@@ -763,7 +763,7 @@ Got Hello
 \begin{block}{7章 クラス}
 \begin{itemize}
 \item クラスに関する概念をトップダウンで学ぶ
-\item 到達点は相当マニアックだが、知っていると役に立つこともあるかもしれない。
+\item 到達点は相当マニアックだが、知っていると役に立つこともあるかもしれない
 \end{itemize}
 \end{block}
 
@@ -815,14 +815,12 @@ class Z(X, Y):
 
 \begin{alertblock}{\texttt{from module import func}の方が速い？}
 \begin{itemize}
-\item 気のせいです。
-\item Pythonが裏側で\texttt{import module}をするので、関係ありません。
+\item 気のせいです
+\item Pythonが裏側で\texttt{import module}をするので、関係ありません
 \end{itemize}
 \end{alertblock}
 
 \end{frame}
-
-
 
 \begin{frame}\frametitle{9章 入力と出力}
 
@@ -855,6 +853,18 @@ file = io.TextIOWrapper(buffered, encoding="utf-8")  # テキストモード
 \begin{itemize}
 \item 組み込み関数と標準ライブラリ、組み込み例外の一覧
 \item 流し読みでOK
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{まとめ}
+
+\begin{block}{まとめ}
+\begin{itemize}
+\item 言語リファレンスを読めば大体書いてある
+\item しかし、言語リファレンスを読み通すのは難しい
+\item 『Python Distilled』で本当に必要なところだけ手に入れよう
 \end{itemize}
 \end{block}
 

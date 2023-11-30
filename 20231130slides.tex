@@ -763,9 +763,33 @@ Got Hello
 \begin{block}{7章 クラス}
 \begin{itemize}
 \item クラスに関する概念をトップダウンで学ぶ
-\item 相当マニアック
+\item 到達点は相当マニアックだが、知っていると役に立つこともあるかもしれない。
 \end{itemize}
 \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{7章 クラス}
+
+\begin{block}{メソッド解決順序のルール}
+\begin{enumerate}
+\item 派生クラスは常に基底クラスよりも先にチェックされる
+\item 基底クラスが複数ある場合は、継承した順にチェックされる
+\end{enumerate}
+\end{block}
+
+\begin{alertblock}{例：C３線型化アルゴリズムで決定できない例}
+\begin{pygments}{python}    
+class X:
+    pass
+    
+class Y(X):
+    pass
+    
+class Z(X, Y):
+    pass  # TypeError
+\end{pygments}
+\end{alertblock}
 
 \end{frame}
 
@@ -780,6 +804,26 @@ Got Hello
 
 \end{frame}
 
+\begin{frame}\frametitle{8章 モジュールとパッケージ}
+
+\begin{block}{\texttt{import module}と\texttt{from module import func}の違い}
+\begin{itemize}
+\item \texttt{import module}は新たに名前空間を生成する
+\item \texttt{from module import func}は実行された名前空間に\texttt{func}を追加する
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{\texttt{from module import func}の方が速い？}
+\begin{itemize}
+\item 気のせいです。
+\item Pythonが裏側で\texttt{import module}をするので、関係ありません。
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+
+
 \begin{frame}\frametitle{9章 入力と出力}
 
 \begin{block}{9章 入力と出力}
@@ -788,6 +832,20 @@ Got Hello
 \item 後半のI/Oライブラリの概要は流し読みでOK
 \end{itemize}
 \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{9章 入力と出力}
+
+\begin{exampleblock}{例：\texttt{open()}関数の裏側}
+\begin{pygments}{python}
+import io
+
+raw = io.FileIO("filename.txt", "r")  # 生バイナリモード
+buffered = io.BufferedReader(raw)  # バッファ付きバイナリ読み込み
+file = io.TextIOWrapper(buffered, encoding="utf-8")  # テキストモード
+\end{pygments}
+\end{exampleblock}
 
 \end{frame}
 
